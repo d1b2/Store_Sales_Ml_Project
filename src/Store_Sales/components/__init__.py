@@ -1,0 +1,1 @@
+from Store_Sales.components.data_ingestion import DataIngestion

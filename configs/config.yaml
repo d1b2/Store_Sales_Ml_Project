@@ -1,0 +1,9 @@
+artifacts_root: artifacts
+
+
+data_ingestion:
+  root_dir: artifacts/data_ingestion
+  source_URL: https://www.kaggle.com/datasets/brijbhushannanda1979/bigmart-sales-data
+  kaggle_file_path: .kaggle/kaggle.json
+  test_filename: Test.csv
+  train_filename: Train.csv
