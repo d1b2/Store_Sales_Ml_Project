@@ -8,7 +8,7 @@ from ensure import ensure_annotations
 from box import ConfigBox
 from pathlib import Path
 from typing import Any
-
+import pandas as pd
 
 @ensure_annotations
 def read_yaml(path_to_yaml: Path) -> ConfigBox:
@@ -56,3 +56,39 @@ def create_directories(path_to_directories: list, verbose=True):
         os.makedirs(path, exist_ok=True)
         if verbose:
             logger.info(f"created directory at: {path}")
+
+@ensure_annotations
+def load_data(file_path: Path, schema_file_path: Path) -> pd.DataFrame:
+    """_summary_
+
+    Args:
+        file_path (Path): file path of data csv file
+        schema_file_path (Path): file path of schema yaml file
+
+    Raises:
+        Exception: raise error message if column is not present in data csv file
+    Returns:
+        pd.DataFrame:  schema columns validated pandas dataframe
+    """
+    
+    datatset_schema = read_yaml(schema_file_path)
+
+    schema = datatset_schema["columns"]
+
+    dataframe = pd.read_csv(file_path)
+
+    error_messgae = ""
+
+    for column in dataframe.columns:
+        if column!=datatset_schema['target_column']:
+            if column in list(schema.keys()):
+                dataframe[column]=dataframe[column].astype(schema[column])
+            else:
+                error_messgae = f"{error_messgae} \n Column: [{column}] is not in the schema."
+    
+    if len(error_messgae) > 0:
+        raise Exception(error_messgae)
+    return dataframe
+
+   
+    

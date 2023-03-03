@@ -7,3 +7,11 @@ data_ingestion:
   kaggle_file_path: .kaggle/kaggle.json
   test_filename: Test.csv
   train_filename: Train.csv
+
+data_validation:
+  root_dir: artifacts/data_validation
+  schema_dir: configs/schema.yaml
+  report_file_name: report.json
+  report_page_file_name: report.html
+
+

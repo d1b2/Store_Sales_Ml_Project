@@ -18,4 +18,5 @@ joblib
 pathlib
 types-PyYAML
 evidently
+ipykernel
 -e .

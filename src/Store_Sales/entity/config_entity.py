@@ -8,3 +8,10 @@ class DataIngestionConfig:
     kaggle_file_path: Path
     test_filename: str
     train_filename: str
+
+@dataclass(frozen=True)
+class DataValidationConfig:
+    root_dir: Path
+    schema_dir: Path
+    report_file_name: str
+    report_page_file_name: Path

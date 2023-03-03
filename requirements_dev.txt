@@ -18,6 +18,7 @@ joblib
 pathlib
 types-PyYAML
 evidently
+ipykernel
 -e .
 
 ## Dev requirements

@@ -1,2 +1,1 @@
-from Store_Sales.entity.config_entity import DataIngestionConfig
-from Store_Sales.entity.artifact_entity import DataIngestionArtifact
+from Store_Sales.entity.config_entity import DataIngestionConfig,DataValidationConfig
