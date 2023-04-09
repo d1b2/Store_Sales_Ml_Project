@@ -1,5 +1,5 @@
 from Store_Sales.config import ConfigurationManager
-from Store_Sales.components import DataIngestion,DataValidation
+from Store_Sales.components import DataIngestion,DataValidation,DataCleaning
 from Store_Sales.entity import *
 from Store_Sales import logger
 
@@ -13,10 +13,15 @@ def main():
     data_validation_config = config.get_data_validation_config()
     data_validation = DataValidation(config=data_validation_config)
 
-    data_ingestion.initiate_data_ingestion()
-    
+    data_cleaning_config = config.get_data_cleaning_config()
+    data_cleaning = DataCleaning(config=data_cleaning_config) 
+
+    data_ingestion.initiate_data_ingestion()    
    
     data_validation.initiate_data_validation()
+
+    data_cleaning.initiate_data_cleaning()
+
 
 
 if __name__ == '__main__':

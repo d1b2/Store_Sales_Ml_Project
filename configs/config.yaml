@@ -14,4 +14,9 @@ data_validation:
   report_file_name: report.json
   report_page_file_name: report.html
 
-
+data_cleaning:
+  root_dir: artifacts/data_cleaning
+  clean_csv_dir: artifacts/data_cleaning/clean_data
+  clean_train_filename: train.csv
+  clean_validation_filename: validation.csv
+  clean_test_filename: test.csv

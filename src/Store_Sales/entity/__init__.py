@@ -1,1 +1,1 @@
-from Store_Sales.entity.config_entity import DataIngestionConfig,DataValidationConfig
+from Store_Sales.entity.config_entity import DataIngestionConfig,DataValidationConfig,DataCleaningConfig

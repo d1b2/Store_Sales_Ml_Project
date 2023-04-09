@@ -15,3 +15,11 @@ class DataValidationConfig:
     schema_dir: Path
     report_file_name: str
     report_page_file_name: Path
+
+@dataclass(frozen=True)
+class DataCleaningConfig:
+    root_dir: Path
+    clean_csv_dir: Path
+    clean_train_filename: str
+    clean_validation_filename: str
+    clean_test_filename: str

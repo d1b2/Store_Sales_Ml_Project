@@ -1,6 +1,7 @@
 import os
 from Store_Sales.entity import *
 from Store_Sales.utils import *
+from Store_Sales import logger
 from pathlib import Path
 from zipfile import ZipFile
 from kaggle.api.kaggle_api_extended import KaggleApi
