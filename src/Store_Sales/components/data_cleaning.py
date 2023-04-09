@@ -78,11 +78,11 @@ class DataCleaning:
             columns_modified=['Item_Fat_Content','Outlet_Size','Item_Identifier','Item_Weight']
             columns_modified1=columns_modified+['Item_Category']
             clean_combined_X_df=pd.DataFrame(combined_cleaned_array,columns=columns_modified1+list(combined_X_df.columns.drop(columns_modified)))
-            #clean_combined_X_df=pd.DataFrame(combined_cleaned_array)
+            
             clean_combined_X_df=clean_combined_X_df[list(combined_X_df[:2])+['Item_Category']+list(combined_X_df[2:])]
 
             logger.info("Combined Dataframe is cleaned.")
-            #return combined_X_df
+            
             return clean_combined_X_df
             
         except Exception as e:
@@ -106,23 +106,36 @@ class DataCleaning:
                 strat_train_set = train_set.loc[train_index].drop(['Sales_cat'],axis=1)
                 strat_validation_set= train_set.loc[validation_index].drop(['Sales_cat'],axis=1)
             logger.info("Cleaned train dataframe splitted into cleaned train and cleaned validation datasets.")
-            cleaned_train_path=os.path.join(self.config.clean_csv_dir,self.config.clean_train_filename)
-            cleaned_test_path=os.path.join(self.config.clean_csv_dir,self.config.clean_test_filename)
-            cleaned_valid_path=os.path.join(self.config.clean_csv_dir,self.config.clean_validation_filename)
-            strat_train_set.to_csv(cleaned_train_path,index=False)
-            logger.info("Cleaned train dataset saved.")
-            test_set.to_csv(cleaned_test_path,index=False)
-            logger.info("Cleaned test dataframe saved.")
-            strat_validation_set.to_csv(cleaned_valid_path,index=False)
-            logger.info("Cleaned validation dataset saved.")
+           
+            return strat_train_set,strat_validation_set,test_set
 
         except Exception as e:
             raise e
+    
+    def save_cleaned_datsets(self,train_set,validation_set,test_set):
+        try:
+            cleaned_train_path=os.path.join(self.config.clean_csv_dir,self.config.clean_train_filename)
+            cleaned_test_path=os.path.join(self.config.clean_csv_dir,self.config.clean_test_filename)
+            cleaned_valid_path=os.path.join(self.config.clean_csv_dir,self.config.clean_validation_filename)
+            train_set.to_csv(cleaned_train_path,index=False)
+            logger.info("Cleaned train dataset saved.")
+            test_set.to_csv(cleaned_test_path,index=False)
+            logger.info("Cleaned test dataframe saved.")
+            validation_set.to_csv(cleaned_valid_path,index=False)
+            logger.info("Cleaned validation dataset saved.")
+
+            pass
+        except Exception as e:
+            raise e
+    
 
     def initiate_data_cleaning(self) :
         try:
             logger.info(f"\n\n{'='*20}Data Cleaning log started.{'='*20} \n\n")
-            self.train_validation_test_split()        
+            
+            train_set,validation_set,test_set=self.train_validation_test_split() 
+            self.save_cleaned_datsets(train_set,validation_set,test_set)       
+            
             logger.info(f"\n\n{'='*20}Data Cleaning log completed.{'='*20} \n\n")          
             
         except Exception as e:
