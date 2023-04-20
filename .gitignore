@@ -133,3 +133,6 @@ dmypy.json
 
 #artifacts
 artifacts/
+
+#secrets
+configs/secrets.yaml
