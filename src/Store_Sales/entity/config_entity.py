@@ -23,3 +23,12 @@ class DataCleaningConfig:
     clean_train_filename: str
     clean_validation_filename: str
     clean_test_filename: str
+
+@dataclass(frozen=True)
+class DataTransformationConfig:
+    root_dir: Path 
+    transform_dir: Path 
+    transform_train_filename: str
+    transform_validation_filename: str
+    column_transformer_object: str
+    

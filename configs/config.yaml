@@ -20,3 +20,10 @@ data_cleaning:
   clean_train_filename: train.csv
   clean_validation_filename: validation.csv
   clean_test_filename: test.csv
+
+data_transformation:
+  root_dir: artifacts/data_transformation
+  transform_dir: artifacts/data_transformation/transformed_data
+  transform_train_filename: train
+  transform_validation_filename: validation
+  column_transformer_object: column_transformer.pkl

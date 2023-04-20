@@ -78,9 +78,6 @@ class DataCleaning:
             columns_modified=['Item_Fat_Content','Outlet_Size','Item_Identifier','Item_Weight']
             columns_modified1=columns_modified+['Item_Category']
             clean_combined_X_df=pd.DataFrame(combined_cleaned_array,columns=columns_modified1+list(combined_X_df.columns.drop(columns_modified)))
-            
-            clean_combined_X_df=clean_combined_X_df[list(combined_X_df[:2])+['Item_Category']+list(combined_X_df[2:])]
-
             logger.info("Combined Dataframe is cleaned.")
             
             return clean_combined_X_df
@@ -93,7 +90,7 @@ class DataCleaning:
             cleaned_dataframe=self.clean_combined_X_df()
             test_set=cleaned_dataframe.iloc[8523:,:]
             train_set=cleaned_dataframe.iloc[:8523,:]
-            logger.info("Combined Dataframe splitted into cleaned test and cleaned train dataframes.")
+            logger.info("Combined Dataframe splitted into cleaned test dataset and cleaned train dataframe.")
             train_set['Item_Outlet_Sales']=self.train['Item_Outlet_Sales']
             logger.info("Target column added to cleaned train dataframe.")
             train_set['Sales_cat']=pd.cut(
@@ -106,7 +103,13 @@ class DataCleaning:
                 strat_train_set = train_set.loc[train_index].drop(['Sales_cat'],axis=1)
                 strat_validation_set= train_set.loc[validation_index].drop(['Sales_cat'],axis=1)
             logger.info("Cleaned train dataframe splitted into cleaned train and cleaned validation datasets.")
-           
+            
+            drop_columns=['Item_Identifier','Outlet_Establishment_Year']
+            test_set.drop(columns=drop_columns,axis=1,inplace=True)
+            strat_train_set.drop(columns=drop_columns,axis=1,inplace=True)
+            strat_validation_set.drop(columns=drop_columns,axis=1,inplace=True)
+            
+            logger.info(f"Columns {drop_columns} : dropped from cleaned train,test and validation datasets.")
             return strat_train_set,strat_validation_set,test_set
 
         except Exception as e:
@@ -120,7 +123,7 @@ class DataCleaning:
             train_set.to_csv(cleaned_train_path,index=False)
             logger.info("Cleaned train dataset saved.")
             test_set.to_csv(cleaned_test_path,index=False)
-            logger.info("Cleaned test dataframe saved.")
+            logger.info("Cleaned test dataset saved.")
             validation_set.to_csv(cleaned_valid_path,index=False)
             logger.info("Cleaned validation dataset saved.")
 

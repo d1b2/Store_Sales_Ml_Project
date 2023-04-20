@@ -64,3 +64,22 @@ class ConfigurationManager:
         )
 
         return data_cleaning_config
+    
+
+
+    def get_data_transformation_config(self) -> DataTransformationConfig:
+        config = self.config.data_transformation
+        
+
+        create_directories([config.root_dir,config.transform_dir])
+
+        data_transformation_config = DataTransformationConfig(
+            root_dir=config.root_dir,
+            transform_dir= config.transform_dir,
+            transform_train_filename=config.transform_train_filename,
+            transform_validation_filename= config.transform_validation_filename,
+            column_transformer_object= config.column_transformer_object
+           
+        )
+
+        return data_transformation_config
