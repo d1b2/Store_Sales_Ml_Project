@@ -19,6 +19,7 @@ pathlib
 types-PyYAML
 evidently
 ipykernel
+mlflow
 -e .
 
 ## Dev requirements
