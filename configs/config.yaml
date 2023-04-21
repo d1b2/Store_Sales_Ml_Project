@@ -27,3 +27,7 @@ data_transformation:
   transform_train_filename: train
   transform_validation_filename: validation
   column_transformer_object: column_transformer.pkl
+
+model_training:
+  root_dir: artifacts/model_training
+  experiment_runs_filename: mlflowruns
