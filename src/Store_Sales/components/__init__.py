@@ -2,3 +2,4 @@ from Store_Sales.components.data_ingestion import DataIngestion
 from Store_Sales.components.data_validation import DataValidation
 from Store_Sales.components.data_cleaning import DataCleaning
 from Store_Sales.components.data_transformation import DataTransformation
+from Store_Sales.components.model_training import ModelTraining

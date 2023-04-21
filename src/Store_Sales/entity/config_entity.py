@@ -32,3 +32,9 @@ class DataTransformationConfig:
     transform_validation_filename: str
     column_transformer_object: str
     
+
+@dataclass(frozen=True)
+class ModelTrainingConfig:
+    root_dir: Path
+    experiment_runs_filename: str
+    

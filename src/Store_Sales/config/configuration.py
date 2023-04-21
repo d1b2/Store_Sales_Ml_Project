@@ -83,3 +83,17 @@ class ConfigurationManager:
         )
 
         return data_transformation_config
+    
+    def get_model_training_config(self) -> ModelTrainingConfig:
+            config = self.config.model_training
+            
+
+            create_directories([config.root_dir])
+
+            model_training_config = ModelTrainingConfig(
+                root_dir=config.root_dir,
+                experiment_runs_filename=config.experiment_runs_filename
+            )
+
+            return model_training_config
+
