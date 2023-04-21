@@ -1,16 +1,9 @@
-#cat_num columns
-#creating column transformer
-#split Xn y in train and validation
-#fit_tranform train
-# fit validation
-#save column_transformer
-#save np arrays
 import os
 from Store_Sales.entity import *
 from Store_Sales.utils import *
 from Store_Sales.constants import *
 from Store_Sales import logger
-from sklearn.preprocessing import FunctionTransformer,OrdinalEncoder,StandardScaler,RobustScaler
+from sklearn.preprocessing import OrdinalEncoder,StandardScaler,RobustScaler,OneHotEncoder
 from sklearn.compose import make_column_transformer
 import pandas as pd
 import numpy as np
@@ -46,9 +39,11 @@ class DataTransformation:
             #for Item_Visibility column
             robust=RobustScaler()
             #for categorical features
-            ord_encoder=OrdinalEncoder()
+            #ord_encoder=OrdinalEncoder()
+            one_hot_encoder=OneHotEncoder(drop='first', sparse=False)
             column_transformer_object = make_column_transformer(
-                                    (ord_encoder,categorical_features), 
+                                    #(ord_encoder,categorical_features), 
+                                    (one_hot_encoder,categorical_features),
                                     (robust,['Item_Visibility']),
                                     (scaler,numerical_features),
                                     remainder='passthrough')
@@ -93,12 +88,14 @@ class DataTransformation:
             self.save_column_transformer(column_transformer_filepath,column_transformer)
             X_train,y_train,X_valid,y_valid=self.get_X_y_from_train_validation()
             X_train_arr=column_transformer.fit_transform(X_train)
+            print(X_train_arr.shape)
             logger.info("Fit_transform of column transformer applied to X_train.")
             train_arr= np.column_stack([X_train_arr, np.array(y_train)])
             logger.info("Fit_transformed X_train stacked to y_train.")
             train_arr_filepath=os.path.join(self.config.transform_dir,self.config.transform_train_filename +".npy")
             self.save_object(train_arr_filepath,train_arr,'train')
             X_valid_arr=column_transformer.transform(X_valid)
+            print(X_valid_arr.shape)
             logger.info("Transform of column transformer applied to X_valid.")
             valid_arr= np.column_stack([X_valid_arr, np.array(y_valid)])
             logger.info("Transformed X_valid stacked to y_valid.")
