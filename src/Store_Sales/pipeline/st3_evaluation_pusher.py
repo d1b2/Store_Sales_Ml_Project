@@ -1,5 +1,5 @@
 from Store_Sales.config import ConfigurationManager
-from Store_Sales.components import ModelEvaluation
+from Store_Sales.components import ModelEvaluation,ModelPusher
 from Store_Sales.entity import *
 from Store_Sales import logger
 
@@ -10,13 +10,14 @@ def main():
     model_evaluation_config = config.get_model_evaluation_config()
     model_evaluation = ModelEvaluation(config=model_evaluation_config) 
 
-   
+    model_pusher_config = config.get_model_pusher_config()
+    model_pusher = ModelPusher(config= model_pusher_config) 
 
    
  
     model_evaluation.initiate_model_evaluation()
 
-       
+    model_pusher.initiate_model_pusher()       
 
 
 if __name__ == '__main__':

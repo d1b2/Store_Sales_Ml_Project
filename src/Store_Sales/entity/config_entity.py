@@ -45,4 +45,8 @@ class ModelEvaluationConfig:
     model_filename: str
 
 
+@dataclass(frozen=True)
+class ModelPusherConfig:
+    dest_dir: Path
+
     

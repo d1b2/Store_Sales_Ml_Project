@@ -136,3 +136,6 @@ artifacts/
 
 #secrets
 configs/secrets.yaml
+
+#pickle
+*.pkl

@@ -111,4 +111,15 @@ class ConfigurationManager:
 
             return model_evaluation_config
     
-  
+    def get_model_pusher_config(self) -> ModelPusherConfig:
+            config = self.config.model_pusher
+            
+
+            create_directories([config.dest_dir])
+
+            model_pusher_config = ModelPusherConfig(
+                dest_dir=config.dest_dir
+            )
+
+            return model_pusher_config
+

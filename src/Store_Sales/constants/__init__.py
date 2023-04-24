@@ -13,3 +13,4 @@ CLEAN_TRAIN_ARRAY_PATH=Path('artifacts/data_transformation/transformed_data/trai
 CLEAN_VALID_ARRAY_PATH=Path('artifacts/data_transformation/transformed_data/validation.npy')
 COL_TRANSFORMER_FILE_PATH=Path('artifacts/data_transformation/column_transformer.pkl')
 EXPERIMENTS_FILE_PATH=Path('artifacts/model_training/mlflowruns.csv')
+TRAINED_MODEL_FILE_PATH=Path('artifacts/model_evaluation/model/model.pkl')
