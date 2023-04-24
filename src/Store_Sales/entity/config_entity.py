@@ -37,4 +37,12 @@ class DataTransformationConfig:
 class ModelTrainingConfig:
     root_dir: Path
     experiment_runs_filename: str
+
+@dataclass(frozen=True)
+class ModelEvaluationConfig:
+    root_dir: Path
+    base_accuracy: float
+    model_filename: str
+
+
     

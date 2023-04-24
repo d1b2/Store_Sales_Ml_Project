@@ -31,3 +31,9 @@ data_transformation:
 model_training:
   root_dir: artifacts/model_training
   experiment_runs_filename: mlflowruns
+
+model_evaluation:
+  root_dir: artifacts/model_evaluation
+  base_accuracy: 0.56
+  model_filename: model_evaluation.csv
+

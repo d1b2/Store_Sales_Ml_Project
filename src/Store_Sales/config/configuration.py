@@ -96,4 +96,19 @@ class ConfigurationManager:
             )
 
             return model_training_config
+    
+    def get_model_evaluation_config(self) -> ModelEvaluationConfig:
+            config = self.config.model_evaluation
+            
 
+            create_directories([config.root_dir])
+
+            model_evaluation_config = ModelEvaluationConfig(
+                root_dir=config.root_dir,
+                base_accuracy=config.base_accuracy,
+                model_filename=config.model_filename
+            )
+
+            return model_evaluation_config
+    
+  

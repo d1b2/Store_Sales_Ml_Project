@@ -69,6 +69,7 @@ class DataTransformation:
             logger.info(f'Saving transformed {message} array.')
         except Exception as e:
             raise e
+        
     def save_column_transformer(self,path,object):
         try:
             pickle.dump(object, open(path, 'wb'))
@@ -83,9 +84,7 @@ class DataTransformation:
         try:
             logger.info(f"\n\n{'='*20}Data Transformation log started.{'='*20} \n\n")            
                  
-            column_transformer=self.get_column_transformer() 
-            column_transformer_filepath=os.path.join(self.config.root_dir,self.config.column_transformer_object)
-            self.save_column_transformer(column_transformer_filepath,column_transformer)
+            column_transformer=self.get_column_transformer()             
             X_train,y_train,X_valid,y_valid=self.get_X_y_from_train_validation()
             X_train_arr=column_transformer.fit_transform(X_train)
             print(X_train_arr.shape)
@@ -94,6 +93,8 @@ class DataTransformation:
             logger.info("Fit_transformed X_train stacked to y_train.")
             train_arr_filepath=os.path.join(self.config.transform_dir,self.config.transform_train_filename +".npy")
             self.save_object(train_arr_filepath,train_arr,'train')
+            column_transformer_filepath=os.path.join(self.config.root_dir,self.config.column_transformer_object)
+            self.save_column_transformer(column_transformer_filepath,column_transformer)
             X_valid_arr=column_transformer.transform(X_valid)
             print(X_valid_arr.shape)
             logger.info("Transform of column transformer applied to X_valid.")
