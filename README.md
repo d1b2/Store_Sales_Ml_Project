@@ -22,7 +22,7 @@ Build a 3 step pipeline.
   - 1.2: Then validated with schema file.
   - 1.3: Both test and trained data is cleaned using column transformer. Also cleaned trained data is further splitted into train and validation data in ratio of 80:20.
   - 1.4: Another column tranformer consisting of onehotencoder,standardscaler and robust scaleer is created. It is applied on train and validation set.
-  </br>
+
 - #### Step 2: Training ####
  Varoius esperiments are performed on machine learning models . Various parameters and metrics alongwith registered models are stored in mlflow remote server.
   </br>
@@ -33,7 +33,7 @@ Build a 3 step pipeline.
 ## Results
 Build a flask based application solution that is able to predict the sales of the different stores of Big Mart according to the provided dataset.
 
-## Artifact Tree
+## Artifacts Tree
 ```
 ├───data_cleaning
 │   └───clean_data
@@ -57,8 +57,6 @@ Build a flask based application solution that is able to predict the sales of th
 │       report.json
 │
 ├───model_evaluation
-│   │   model.csv
-│   │   model.pkl
 │   │   model_evaluation.csv
 │   │
 │   └───model
