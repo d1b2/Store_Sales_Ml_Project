@@ -24,7 +24,7 @@ Build a 3 step pipeline.
   - 1.4: Another column tranformer consisting of onehotencoder,standardscaler and robust scaleer is created. It is applied on train and validation set.
   </br>
 - #### Step 2: Training ####
- </br>Varoius esperiments are performed on machine learning models . Various parameters and metrics alongwith registered models are stored in mlflow remote server.
+ Varoius esperiments are performed on machine learning models . Various parameters and metrics alongwith registered models are stored in mlflow remote server.
   </br>
 - #### Step 3:: Evaluation Pusher ####
   - 3.1: Various registered model are evaluated. Based on evaluation each model is send to production,staging or none stage on mlflow server.
@@ -32,6 +32,45 @@ Build a 3 step pipeline.
 
 ## Results
 Build a flask based application solution that is able to predict the sales of the different stores of Big Mart according to the provided dataset.
+
+## Artifact Tree
+```
+├───data_cleaning
+│   └───clean_data
+│           test.csv
+│           train.csv
+│           validation.csv
+│
+├───data_ingestion
+│       Test.csv
+│       Train.csv
+│
+├───data_transformation
+│   │   column_transformer.pkl
+│   │
+│   └───transformed_data
+│           train.npy
+│           validation.npy
+│
+├───data_validation
+│       report.html
+│       report.json
+│
+├───model_evaluation
+│   │   model.csv
+│   │   model.pkl
+│   │   model_evaluation.csv
+│   │
+│   └───model
+│           conda.yaml
+│           MLmodel
+│           model.pkl
+│           python_env.yaml
+│           requirements.txt
+│
+└───model_training
+        mlflowruns.csv
+```
 
 ## 💻 Setup
 Create new environment &emsp;```conda create -n env python=3.8```
