@@ -162,7 +162,8 @@ class ModelTraining:
             #self.initiate_experimentation(regression_func=self.random_regressor,exp_name='trials_4_ohe',name='RFR')
             #self.initiate_experimentation(regression_func=self.basic_regressor,exp_name='trials_5_ohe',name='LRs')
             
-            self.initiate_experimentation(regression_func=self.random_regressor,exp_name='trials_5_ohe',name='RFR')
+            #self.initiate_experimentation(regression_func=self.random_regressor,exp_name='trials_5_ohe',name='RFR')
+            self.initiate_experimentation(regression_func=self.random_regressor,exp_name='trials_6_ohe',name='RFR')
         except Exception as e:
             raise e
     
@@ -206,12 +207,12 @@ class ModelTraining:
                         #"criterion":['poisson'],
                         #"bootstrap":[True],
                         #"random_state":[42],
-                        #"min_samples_split":[5],
+                        #"min_samples_leaf":[5],
+                        #"min_samples_split":[5]}
                         "min_samples_leaf":[1,2,5],
                         "max_features":[0.3,0.6,1],
                         "max_depth":[2,4,8,16,18],
-                        "min_samples_split":[2,5,10],
-                        #"min_samples_leaf":[],
+                        "min_samples_split":[2,5,10],            
                         "criterion":['squared_error','poisson'],
                         "bootstrap":[True,False],
                         "random_state":[0,10,42]}

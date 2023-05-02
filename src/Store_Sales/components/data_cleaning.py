@@ -3,7 +3,7 @@ from Store_Sales.entity import *
 from Store_Sales.utils import *
 from Store_Sales.constants import *
 from Store_Sales import logger
-from sklearn.preprocessing import FunctionTransformer,OrdinalEncoder
+from sklearn.preprocessing import FunctionTransformer,LabelEncoder
 from sklearn.compose import make_column_transformer
 from sklearn.impute import SimpleImputer
 from sklearn.impute import KNNImputer
@@ -37,15 +37,23 @@ class DataCleaning:
             raise e
         
     def custom_imputer_generator(self,df):
-        try:
-            ord_encoder=OrdinalEncoder()
+        try:            
+            le=LabelEncoder()
             knn_imputer = KNNImputer(n_neighbors=2, weights="uniform")   
+            #df1=df.iloc[:,0:2]
+            #df1['Item_Identifier']=ord_encoder.fit_transform(df1)
+            #df['Item_Weight']=knn_imputer.fit_transform(df1)[:,1]
+            
+           # df['Item_Category']=df['Item_Identifier'].astype(str).str[:1].replace(['F', 'D', 'N'],['Food', 'Drink', 'Non_Consumable'])
+           
             df1=df.iloc[:,0:2]
-            df1['Item_Identifier']=ord_encoder.fit_transform(df1)
+            df1['Item_Identifier']=le.fit_transform(df1['Item_Identifier'])
             df['Item_Weight']=knn_imputer.fit_transform(df1)[:,1]
             logger.info("Item_Weight column cleaned.")
             df['Item_Category']=df['Item_Identifier'].astype(str).str[:1].replace(['F', 'D', 'N'],['Food', 'Drink', 'Non_Consumable'])
+            #df['Item_Identifier']=df1['Item_Identifier']
             logger.info("Item_Category column created.")
+            #return df
             return df
         except Exception as e:
             raise e
@@ -106,14 +114,18 @@ class DataCleaning:
             
             drop_columns=['Item_Identifier','Outlet_Establishment_Year']
             test_set.drop(columns=drop_columns,axis=1,inplace=True)
+           
             strat_train_set.drop(columns=drop_columns,axis=1,inplace=True)
             strat_validation_set.drop(columns=drop_columns,axis=1,inplace=True)
             
             logger.info(f"Columns {drop_columns} : dropped from cleaned train,test and validation datasets.")
             return strat_train_set,strat_validation_set,test_set
+            
 
         except Exception as e:
             raise e
+    
+
     
     def save_cleaned_datsets(self,train_set,validation_set,test_set):
         try:
@@ -131,13 +143,17 @@ class DataCleaning:
         except Exception as e:
             raise e
     
+   
+    
 
     def initiate_data_cleaning(self) :
         try:
             logger.info(f"\n\n{'='*20}Data Cleaning log started.{'='*20} \n\n")
             
             train_set,validation_set,test_set=self.train_validation_test_split() 
-            self.save_cleaned_datsets(train_set,validation_set,test_set)       
+            self.save_cleaned_datsets(train_set,validation_set,test_set) 
+            #train_set,test_set=self.train_test_split()      
+           # self.save_clean_datsets( train_set,test_set)
             
             logger.info(f"\n\n{'='*20}Data Cleaning log completed.{'='*20} \n\n")          
             
