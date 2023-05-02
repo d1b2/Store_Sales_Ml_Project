@@ -1,0 +1,64 @@
+{% extends 'base.html'%}
+ {% block content%}
+ <div style="text-align: center; font-size:xx-large;">
+   <br>
+   <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Previous Records Entered</h1>
+   </div>
+   <br><br> 
+      {% for message in get_flashed_messages() %}
+      <div class="alert-delete" role="alert">
+         <strong>{{message}} </strong>
+      
+      </div>
+
+            <br><br>   
+      {% endfor %}
+      
+<table style=" margin-left: auto;
+      margin-right: auto;">
+         <thead><tr>
+            <th>Id</th>    
+            <th>&emsp;Fat Content</th>            
+            <th>&emsp;Weight</th>
+            <th>&emsp;Category</th>
+            <th>&emsp;&emsp;Item Type</th>
+            <th>&emsp;Visibility</th>
+            <th>&emsp;MRP</th>
+            <th>&emsp;Identifier</th>
+            <th>&emsp;Size</th>
+            <th>&emsp;Location</th>
+            <th>&emsp;Outlet Type</th>
+            <th>&emsp;Prediction </th>
+            <th>&emsp;&emsp;&emsp;Timestamp</th>
+            <th>&emsp;Response Time</th>
+            <th>&emsp;</th>
+         </tr>
+         </thead>
+         {% for db in data %}
+         <tbody>
+            
+                <td>{{db.id}}</td>
+                <td style="text-align: center;">{{db.Item_Fat_Content}}</td>
+                <td style="text-align: center;">{{db.Item_Weight}}</td>
+                <td style="text-align: center;">{{db.Item_Category}}</td>
+                <td style="text-align: center;">&emsp;{{db.Item_Type}}</td>
+                <td style="text-align: center;">{{db.Item_Visibility}}</td>
+                <td style="text-align: center;">{{db.Item_MRP}}</td>
+                <td style="text-align: center;">{{db.Outlet_Identifier}}</td>
+                <td style="text-align: center;">{{db.Outlet_Size}}</td>
+                <td style="text-align: center;">{{db.Outlet_Location_Type}}</td>
+                <td style="text-align: center;">{{db.Outlet_Type}}</td>
+                <td style="text-align: center;">{{db.Prediction}}</td>
+                <td style="text-align: center;">{{db.time_stamp}}</td>
+                <td style="text-align: center;">{{db.model_response_time}} ms</td>
+                <td>
+                  <button type="button" class="btn btn-outline-danger" >
+                  <a href="/delete/{{db.id}}"
+                     style="text-decoration:none; color: red; ">Delete</a>
+                  </button>
+              </td>
+            </tbody>
+            {% endfor%}
+         </table>
+         <br><br>  <br><br>  <br><br>  <br><br>  
+{% endblock%}

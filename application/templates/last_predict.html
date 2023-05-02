@@ -1,7 +1,28 @@
 {% extends 'base.html'%}
  {% block content%}
- {% for i in inputs%}
- {{i}}
- {% endfor %}
-<strong>{{prediction}}</strong>
+ <br><br>
+ <div style="text-align: center;font-size:larger">
+    <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Last Prediction</h1>
+   
+    <table style=" margin-left: auto; font-size:medium;
+    margin-right: auto;">   
+    <tr><td><b>Fat Content</b></td> <td>&emsp;{{ values.Item_Fat_Content }}</td></tr>
+    <tr><td><b>Weight</b></td> <td>&emsp;{{ values.Item_Weight }}</td></tr>
+    <tr><td><b>Category</b></td> <td>&emsp;{{ values.Item_Category }}</td></tr>
+    <tr><td><b>Type</b></td> <td>&emsp;{{ values.Item_Type }}</td></tr>
+    <tr><td><b>Visibilty</b></td> <td>&emsp;{{ values.Item_Visibility }}</td></tr>
+    <tr><td><b>MRP</b></td> <td>&emsp;{{ values.Item_MRP }}</td></tr>
+    <tr><td><b>Size</b></td> <td>&emsp;{{ values.Outlet_Size }}</td></tr>
+    <tr><td><b>Identifier</b></td> <td>&emsp;{{ values.Outlet_Identifier }}</td></tr>
+    <tr><td><b>Location</b></td> <td>&emsp;{{ values.Outlet_Location_Type }}</td></tr>
+    <tr><td><b>Outlet Type</b></td> <td>&emsp;{{ values.Outlet_Type }}</td></tr>
+
+    <tr><td><b>Response time</b></td> <td>&emsp;<b>{{ values.model_response_time}} ms</b></td></tr></br>
+    
+    
+    <tr><td><b>Predicted Sale </b></td> <td>&emsp;<b>{{values.Prediction}}</b></td></tr>
+</table>
+</div>
+<br><br>  <br><br>  <br><br>  <br><br> <br><br>  <br><br>  <br><br>  <br><br> 
+
 {% endblock%}
