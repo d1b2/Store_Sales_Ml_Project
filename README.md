@@ -8,7 +8,7 @@
   <a href="https://numpy.org/"><img src="https://img.shields.io/badge/-NumPy-4DABCF?style=for-the-badge&logo=numpy&logoColor=white" alt= "numPy"></a>
   <a href="https://scikit-learn.org/stable/"><img src="https://img.shields.io/badge/-scikitlearn-FF9C34?style=for-the-badge&logo=scikitlearn&logoColor=white" alt= "sklearn"></a>
   <a href="https://flask.palletsprojects.com/en/2.2.x/"><img src="https://img.shields.io/badge/-Flask-lightgrey?style=for-the-badge&logo=flask&logoColor=black" alt= "flask"></a>
-<a href="https://dvc.org/doc"><img src="https://img.shields.io/badge/-DVC-E65933?style=for-the-badge&logo=dvc&logoColor=2CB6CD" alt= "dvc"></a>
+<a href="https://flask-sqlalchemy.palletsprojects.com/en/3.0.x/"><img src="https://img.shields.io/badge/-FlaskSQLAlchemy-E65933?style=for-the-badge&logo=flasksqlalchemy&logoColor=black" alt= "flasksqlalchemy"></a>
 <a href="https://www.evidentlyai.com/"><img src="https://img.shields.io/badge/-evidently-green?style=for-the-badge&evidently=dvc&logoColor=white" alt= "evidently"></a>
 <a href="https://mlflow.org/">  <img src="https://img.shields.io/badge/-mlflow-1767BB?style=for-the-badge&logo=mlflow&logoColor=white" alt= "mlflow"></a>
 
@@ -32,6 +32,12 @@ Build a 3 step pipeline.
 
 ## Results
 Build a flask based application solution that is able to predict the sales of the different stores of Big Mart according to the provided dataset.
+
+## Flask Application Demo
+<img src="application/static/static_pages.gif">
+<img src="application/static/predict_pages.gif">
+<img src="application/static/record_pages.gif">
+
 
 ## Artifacts Tree
 ```
