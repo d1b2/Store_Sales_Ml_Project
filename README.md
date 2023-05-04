@@ -34,9 +34,12 @@ Build a 3 step pipeline.
 Build a flask based application solution that is able to predict the sales of the different stores of Big Mart according to the provided dataset.
 
 ## Flask Application Demo
+Home, About and Contact Page
 <img src="application/static/static_pages.gif">
-<img src="application/static/predict_pages.gif">
-<img src="application/static/record_pages.gif">
+Predict and Last Prediction Page
+<img src="application/static/predict_page.gif">
+Record Page
+<img src="application/static/record_page.gif">
 
 
 ## Artifacts Tree
